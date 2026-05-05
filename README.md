@@ -356,7 +356,7 @@ Open [http://localhost:3000](http://localhost:3000) 🚀
 |----------|------|
 | 🌐 Live Application | [pims-online-pharmacy-system.vercel.app](https://pims-online-pharmacy-system.vercel.app) |
 | 💻 GitHub Repository | [Khadija-Zahra335/pims-Online-Pharmacy-System-](https://github.com/Khadija-Zahra335/pims-Online-Pharmacy-System-) |
-| 🎨 Figma Prototype | [View Prototype](https://www.figma.com/design/oTlre6OMq7ytxrvXLgXBN3) |
+| 🎨 Figma Prototype | [View Prototype](https://www.figma.com/proto/ys2u9tuSdNANinzXma1vET/PIMS?node-id=0-1&t=xfUl1mhc1XluExVL-1) |
 
 ---
 
