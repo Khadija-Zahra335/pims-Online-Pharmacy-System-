@@ -95,10 +95,15 @@ export default function POS() {
     if (cart.length === 0) { toast.error("Cart is empty"); return; }
     setProcessing(true);
     try {
-      // Deduct stock
+      // Deduct stock and update salesHistory
+      const currentMonth = new Date().getMonth();
       for (const item of cart) {
+        const currentHistory = item.salesHistory || Array(12).fill(0);
+        const updatedHistory = [...currentHistory];
+        updatedHistory[currentMonth] = (updatedHistory[currentMonth] || 0) + item.qty;
         await updateDoc(doc(db, "medicines", item.id), {
           quantity: item.quantity - item.qty,
+          salesHistory: updatedHistory,
         });
       }
 
