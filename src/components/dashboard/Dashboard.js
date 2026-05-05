@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
-import { useAuth } from "../../contexts/AuthContext";
-import { differenceInDays } from "date-fns";
+import { differenceInDays, format } from "date-fns";
 import {
   Package, AlertTriangle, ShoppingCart, TrendingUp,
   Clock, AlertCircle,
@@ -15,7 +14,6 @@ import {
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
 export default function Dashboard() {
-  const { } = useAuth();
   const [stats, setStats]     = useState({ total: 0, expiring: 0, lowStock: 0, outOfStock: 0 });
   const [medicines, setMeds]  = useState([]);
   const [salesData, setSales] = useState([]);
@@ -40,12 +38,23 @@ export default function Dashboard() {
 
       setStats({ total: meds.length, expiring, lowStock, outOfStock });
 
-      // Build last-12-months chart data from salesHistory arrays
+      // Build chart from real transactions
+      const txnSnap = await getDocs(collection(db, "transactions"));
+      const txns = txnSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+      
+      const monthlySales = Array(12).fill(0);
+      txns.forEach(txn => {
+        if (txn.createdAt?.toDate) {
+          const month = txn.createdAt.toDate().getMonth();
+          const units = txn.items?.reduce((a, item) => a + item.qty, 0) || 0;
+          monthlySales[month] += units;
+        }
+      });
+
+      // Also add salesHistory from medicines as baseline
       const chartData = MONTHS.map((month, i) => {
-        const total = meds.reduce((acc, m) => {
-          return acc + (m.salesHistory?.[i] || 0);
-        }, 0);
-        return { month, units: total };
+        const historyTotal = meds.reduce((acc, m) => acc + (m.salesHistory?.[i] || 0), 0);
+        return { month, units: monthlySales[i] + historyTotal };
       });
       setSales(chartData);
       setLoading(false);
