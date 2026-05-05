@@ -39,10 +39,10 @@ export default function Forecasting() {
   const [loading, setLoading]  = useState(true);
   const [selected, setSelected] = useState(null);
 
-  const compute = (meds) => {
-    const result = meds.map(med => {
+  const recompute = () => {
+    const result = medicines.map(med => {
       const history = med.salesHistory || Array(12).fill(10);
-      const nextWeeks = linearForecast(history, 4); // 4-week forecast
+      const nextWeeks = linearForecast(history, 4);
       const reorderQty = getReorderQty(med, nextWeeks);
       const avgSales = history.reduce((a, b) => a + b, 0) / history.length;
       const trend = history.length >= 2
@@ -52,7 +52,6 @@ export default function Forecasting() {
     });
     result.sort((a, b) => b.reorderQty - a.reorderQty);
     setForecasts(result);
-    if (!selected && result.length) setSelected(result[0]);
   };
 
   useEffect(() => {
@@ -60,10 +59,23 @@ export default function Forecasting() {
       const snap = await getDocs(collection(db, "medicines"));
       const meds = snap.docs.map(d => ({ id: d.id, ...d.data() }));
       setMeds(meds);
-      compute(meds);
+      const result = meds.map(med => {
+        const history = med.salesHistory || Array(12).fill(10);
+        const nextWeeks = linearForecast(history, 4);
+        const reorderQty = getReorderQty(med, nextWeeks);
+        const avgSales = history.reduce((a, b) => a + b, 0) / history.length;
+        const trend = history.length >= 2
+          ? ((history[history.length - 1] - history[0]) / (history[0] || 1)) * 100
+          : 0;
+        return { ...med, nextWeeks, reorderQty, avgSales: Math.round(avgSales), trend: Math.round(trend) };
+      });
+      result.sort((a, b) => b.reorderQty - a.reorderQty);
+      setForecasts(result);
+      if (result.length) setSelected(result[0]);
       setLoading(false);
     };
     load();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const WEEK_LABELS = ["Week 1","Week 2","Week 3","Week 4"];
@@ -96,7 +108,7 @@ export default function Forecasting() {
     <>
       <div className="page-header">
         <h2>AI Demand Forecasting</h2>
-        <button className="btn btn-secondary" onClick={() => compute(medicines)}>
+        <button className="btn btn-secondary" onClick={recompute}>
           <RefreshCw size={14} /> Recalculate
         </button>
       </div>

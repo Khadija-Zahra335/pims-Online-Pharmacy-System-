@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useAuth } from "../../contexts/AuthContext";
 import { differenceInDays } from "date-fns";
@@ -15,7 +15,7 @@ import {
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
 export default function Dashboard() {
-  const { userRole } = useAuth();
+  const { } = useAuth();
   const [stats, setStats]     = useState({ total: 0, expiring: 0, lowStock: 0, outOfStock: 0 });
   const [medicines, setMeds]  = useState([]);
   const [salesData, setSales] = useState([]);
