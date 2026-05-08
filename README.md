@@ -32,10 +32,12 @@
 - [📁 Project Structure](#-project-structure)
 - [🚀 Getting Started](#-getting-started)
 - [👥 Team](#-team)
-- [📸 Screenshots](#-screenshots)
+- [📸 Screenshots](#-screenshots
 - [📄 License](#-license)
 
 ---
+
+<a id="features"></a>
 
 ## ✨ Features
 
@@ -124,6 +126,8 @@
 
 ---
 
+<a id="live-demo"></a>
+
 ## 🎯 Live Demo & Credentials
 
 ### 🌐 Live Application
@@ -141,6 +145,8 @@
 
 ---
 
+<a id="tech-stack"></a>
+
 ## 🛠️ Tech Stack
 
 | Technology | Version | Purpose |
@@ -157,6 +163,8 @@
 | **Vercel** | — | Hosting, CDN & auto-deployments |
 
 ---
+
+<a id="architecture"></a>
 
 ## 🏗️ Architecture
 
@@ -194,7 +202,10 @@
 
 ---
 
+<a id="project-structure"></a>
+
 ## 📁 Project Structure
+
 
 ```
 pims/
@@ -232,6 +243,8 @@ pims/
 ```
 
 ---
+
+<a id="getting-started"></a>
 
 ## 🚀 Getting Started
 
@@ -277,6 +290,8 @@ Open [http://localhost:3000](http://localhost:3000) 🚀
 ```
 
 ---
+
+<a id="team"></a>
 
 ## 👥 Team
 
@@ -324,7 +339,10 @@ Open [http://localhost:3000](http://localhost:3000) 🚀
 
 ---
 
+<a id="access-control-matrix"></a>
+
 ## 🔐 Access Control Matrix
+
 
 | Module | Admin | Manager | Cashier |
 |--------|:-----:|:-------:|:-------:|
@@ -337,7 +355,10 @@ Open [http://localhost:3000](http://localhost:3000) 🚀
 
 ---
 
+<a id="quality-metrics"></a>
+
 ## 📊 Quality Metrics
+
 
 | Metric | Target | Achieved |
 |--------|--------|----------|
@@ -349,6 +370,8 @@ Open [http://localhost:3000](http://localhost:3000) 🚀
 | RBAC Violations | 0 incidents | ✅ Protected on every route |
 
 ---
+
+<a id="important-links"></a>
 
 ## 🔗 Important Links
 
