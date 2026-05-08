@@ -32,8 +32,6 @@
 - [📁 Project Structure](#-project-structure)
 - [🚀 Getting Started](#-getting-started)
 - [👥 Team](#-team)
-- [📸 Screenshots](#-screenshots)
-- [📄 License](#-license)
 
 ---
 
