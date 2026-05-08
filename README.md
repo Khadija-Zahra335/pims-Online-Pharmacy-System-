@@ -32,7 +32,7 @@
 - [📁 Project Structure](#-project-structure)
 - [🚀 Getting Started](#-getting-started)
 - [👥 Team](#-team)
-- [📸 Screenshots](#-screenshots
+- [📸 Screenshots](#-screenshots)
 - [📄 License](#-license)
 
 ---
