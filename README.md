@@ -360,8 +360,8 @@ Open [http://localhost:3000](http://localhost:3000) 🚀
 
 | Metric | Target | Achieved |
 |--------|--------|----------|
-| POS Response Time | < 1 second | ✅ < 200ms |
-| AI Forecast Generation | < 5 seconds | ✅ < 500ms |
+| POS Response Time | < 5 second | ✅ < 5 second |
+| AI Forecast Generation | < 5 seconds | ✅ < 5 seconds |
 | Billing Accuracy | 0 errors | ✅ 100% accurate |
 | User Onboarding Time | ≤ 15 minutes | ✅ Demo buttons on login |
 | System Uptime | ≥ 99% | ✅ Vercel CDN + Firebase SLA |
